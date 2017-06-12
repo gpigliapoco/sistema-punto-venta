@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="12b923ec-0078-491e-9749-999b1d538c2f">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="120"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="thain" uuid="b667b58d-152c-469b-bf81-22b89f765fc0">
+		<queryString language="SQL">
+			<![CDATA[select * from operadores]]>
+		</queryString>
+		<field name="idoperadores" class="java.lang.Integer"/>
+		<field name="nombre" class="java.lang.String"/>
+		<field name="direccion" class="java.lang.String"/>
+		<field name="cuit" class="java.lang.Integer"/>
+		<field name="ciudad" class="java.lang.String"/>
+		<field name="provincia" class="java.lang.String"/>
+		<field name="tel" class="java.lang.String"/>
+		<field name="observacion" class="java.lang.String"/>
+		<field name="flete" class="java.lang.String"/>
+		<field name="descarga" class="java.lang.String"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[select * from operadores]]>
+	</queryString>
+	<field name="idoperadores" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="cuit" class="java.lang.Integer"/>
+	<field name="ciudad" class="java.lang.String"/>
+	<field name="provincia" class="java.lang.String"/>
+	<field name="tel" class="java.lang.String"/>
+	<field name="observacion" class="java.lang.String"/>
+	<field name="flete" class="java.lang.String"/>
+	<field name="descarga" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="19974a7e-85ec-46f1-9ce7-c26dd6ae2e64" x="138" y="34" width="289" height="45"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="36"/>
+				</textElement>
+				<text><![CDATA[OPERADORES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement uuid="460c25a2-df19-4620-8ff2-a45376983379" x="0" y="0" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="460c25a2-df19-4620-8ff2-a45376983379" x="0" y="34" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="e76c94db-d5b7-4671-8dd3-8a7266f0d4d4" x="172" y="15" width="213" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="15"/>
+				</textElement>
+				<text><![CDATA[LISTADO DE PRODUCTOS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1c45fb98-e4ae-4553-a24e-4a2fc7181453" x="0" y="0" width="27" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e3ac8020-7c8f-4455-87d9-b260c2da85b1" x="27" y="0" width="181" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6a8a5bb2-069d-4a7f-997e-0bd3b83f52ca" x="208" y="0" width="123" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[DIRECCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3566cb74-efc6-4527-b6c1-9e88d0601ad8" x="331" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[CIUDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f66c121e-a3f5-47f7-8666-77ec852b4085" x="431" y="0" width="81" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[TEL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement uuid="be234803-9a13-4123-b042-4423e3dd3fd8" x="0" y="0" width="27" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{idoperadores}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c66fc0ed-b4db-451d-9441-bf928af909f7" x="27" y="0" width="181" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="65dd62a8-1ab0-40b6-8cca-33b7cbf55354" x="208" y="0" width="123" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f9e951c4-5a4f-4be0-8dee-d93ee48a85e8" x="331" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ciudad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="edb238ac-4d0f-4a20-923d-df92dc6d15f1" x="431" y="0" width="124" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tel}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

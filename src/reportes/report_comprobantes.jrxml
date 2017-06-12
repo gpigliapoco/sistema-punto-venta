@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ec609630-0704-4a16-870e-d70bd03a48b9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="inicio" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fin" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     comprobantes.`comprobante` AS comprobantes_comprobante,
+     comprobantes.`descripcion` AS comprobantes_descripcion,
+     comprobantes.`fecha` AS comprobantes_fecha,
+     comprobantes.`importe` AS comprobantes_importe,
+     comprobantes.`tipoDeComprobante` AS comprobantes_tipoDeComprobante,
+     operadores.`idOperadores` AS operadores_idOperadores,
+     operadores.`nombre` AS operadores_nombre
+FROM
+     `operadores` operadores INNER JOIN `comprobantes` comprobantes ON operadores.`idOperadores` = comprobantes.`fk_idOperadores`
+where
+comprobantes.`fecha` between $P{inicio} and $P{fin}
+order by 
+comprobantes_fecha asc]]>
+	</queryString>
+	<field name="comprobantes_comprobante" class="java.lang.Integer"/>
+	<field name="comprobantes_descripcion" class="java.lang.String"/>
+	<field name="comprobantes_fecha" class="java.sql.Date"/>
+	<field name="comprobantes_importe" class="java.lang.Double"/>
+	<field name="comprobantes_tipoDeComprobante" class="java.lang.String"/>
+	<field name="operadores_idOperadores" class="java.lang.Long"/>
+	<field name="operadores_nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement x="139" y="8" width="289" height="45" uuid="743777d5-cb97-4f3d-8ed2-bcf363f85e31"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="36"/>
+				</textElement>
+				<text><![CDATA[COMPROBANTES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="165" y="9" width="213" height="20" uuid="bc3b6ffe-c5b8-49a3-a8d0-d3789ef5c175"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="15"/>
+				</textElement>
+				<text><![CDATA[REMITOS ENTREGADOS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="28" width="555" height="1" uuid="fc3a75c2-a8a2-4c0c-8772-0cc7ea949b59"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="31" width="555" height="1" uuid="1ca39698-c607-4ba8-87a7-1c8757e49a49"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="35" height="20" uuid="392c3220-01ea-45c4-9af3-7fa5646d0226"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="0" width="192" height="20" uuid="75781cc9-9f6a-4cd1-87d4-a0d0a62446f4"/>
+				<text><![CDATA[RAZON SOCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="0" width="56" height="20" uuid="99777097-a1c7-4078-a803-fd8d6b884078"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="0" width="84" height="20" uuid="c8b474a6-5f34-45e6-a4f4-8d58f514e3a6"/>
+				<text><![CDATA[TIPO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="389" y="0" width="50" height="20" uuid="75f651be-4d0e-4e62-be7b-7c52070b5a65"/>
+				<text><![CDATA[NUMERO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="ac090225-797b-4b55-b3cc-af9a4265d99c"/>
+				<text><![CDATA[IMPORTE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="1" width="35" height="20" uuid="3ba6b099-3311-4046-9b6e-1de542a4ebc1"/>
+				<textFieldExpression><![CDATA[$F{operadores_idOperadores}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="39" y="1" width="192" height="20" uuid="9d0ac7f1-01e2-4005-8c8b-e050ebcdac72"/>
+				<textFieldExpression><![CDATA[$F{operadores_nombre}]]></textFieldExpression>
+			</textField>
+			<textField pattern="d/M/yyyy">
+				<reportElement x="231" y="1" width="56" height="20" uuid="e954f14b-fa8b-4977-bcb5-f061e6c55b1d"/>
+				<textFieldExpression><![CDATA[$F{comprobantes_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="1" width="84" height="20" uuid="d7d2026e-2091-426f-a579-a9849e4dc053"/>
+				<textFieldExpression><![CDATA[$F{comprobantes_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="389" y="1" width="50" height="20" uuid="882a2669-f45b-49a1-8334-d4a88b60533d"/>
+				<textFieldExpression><![CDATA[$F{comprobantes_comprobante}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="455" y="1" width="100" height="20" uuid="7748404b-ad95-4ab3-a688-1e3ca8a28a0b"/>
+				<textFieldExpression><![CDATA[$F{comprobantes_importe}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

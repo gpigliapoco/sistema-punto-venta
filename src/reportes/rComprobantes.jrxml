@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b1cf6f89-b48f-4a04-9990-6ace15718053">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="208"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="mes" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select c.*,DATE_FORMAT(c.fecha, '%d-%m-%Y') as fechas,o.nombre from comprobantes c,operadores o where o.idoperadores=c.operadores_idoperadores and MONTH(c.fecha)=$P{mes}
+ORDER by c.comprobante]]>
+	</queryString>
+	<field name="idcomprobantes" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="operadores_idoperadores" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="comprobante" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoDeComprobante" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="importe" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechas" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="131" y="34" width="289" height="45" uuid="19974a7e-85ec-46f1-9ce7-c26dd6ae2e64"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="36"/>
+				</textElement>
+				<text><![CDATA[COMPROBANTES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="2" y="0" width="555" height="1" uuid="460c25a2-df19-4620-8ff2-a45376983379"/>
+			</line>
+			<line>
+				<reportElement x="2" y="34" width="555" height="1" uuid="460c25a2-df19-4620-8ff2-a45376983379"/>
+			</line>
+			<staticText>
+				<reportElement x="174" y="15" width="213" height="20" uuid="e76c94db-d5b7-4671-8dd3-8a7266f0d4d4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="15"/>
+				</textElement>
+				<text><![CDATA[REMITOS ENTREGADOS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="26" height="20" uuid="2c4687d1-251b-4b22-9eeb-ddb170cbdac9"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="0" width="38" height="20" uuid="812c9208-4377-404c-803f-336769daa9e2"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[COD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="74" y="0" width="132" height="20" uuid="78715309-0007-45cd-9778-a5e16bb9d9f1"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="0" width="100" height="20" uuid="923f556c-ce00-4026-9e50-b2cda82d5194"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="332" y="0" width="55" height="20" uuid="a8b9b008-f126-4ffc-9e07-c0a263b023ad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[REMITO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="0" width="80" height="20" uuid="0a31ff6a-8085-47ef-99ac-f62ee387a969"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[IMPORTE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="26" height="20" uuid="f975d254-d561-4910-b1bb-90bc2293379c"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{idcomprobantes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="31" y="0" width="38" height="20" uuid="cab30030-6e99-4351-8cfe-3c0eafd51b45"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{operadores_idoperadores}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="74" y="0" width="132" height="20" uuid="9c55f075-80b7-4114-8f78-ac15469798cf"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="332" y="0" width="55" height="20" uuid="c6da47c6-5f93-4c04-a5cf-4234d658ef77"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{comprobante}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="398" y="0" width="80" height="20" uuid="15e517a2-05a9-4b96-96fa-fc79a6db1e9e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="0" width="100" height="20" uuid="b0587c50-c11b-4c23-9b0b-a9e88b35dd5f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fechas}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

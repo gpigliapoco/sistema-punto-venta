@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1f84adb3-3fc3-420e-8634-1ce817994f0d">
+	<property name="ireport.zoom" value="1.9487171000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from productos]]>
+	</queryString>
+	<field name="idproductos" class="java.lang.Integer"/>
+	<field name="producto" class="java.lang.String"/>
+	<field name="peso" class="java.math.BigDecimal"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="19974a7e-85ec-46f1-9ce7-c26dd6ae2e64" x="135" y="34" width="289" height="45"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="36"/>
+				</textElement>
+				<text><![CDATA[PRODUCTOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement uuid="460c25a2-df19-4620-8ff2-a45376983379" x="0" y="1" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="460c25a2-df19-4620-8ff2-a45376983379" x="0" y="34" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="e76c94db-d5b7-4671-8dd3-8a7266f0d4d4" x="186" y="14" width="213" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="15"/>
+				</textElement>
+				<text><![CDATA[DETALLE DE PRODUCTOS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="306cf0a5-3adb-4c4b-9464-a4a01fcdcd88" x="21" y="2" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[IDPRODUCTOS	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b17b574e-a439-4c5f-ac44-59a1fb82c807" x="135" y="2" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[PRODUCTOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ec6e5c1c-70c5-43db-ba52-00a17c3fd189" x="248" y="2" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[PESO	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="854168fe-4bae-4146-888b-4de7db1f2211" x="370" y="2" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[DESCRIPCION]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="460c25a2-df19-4620-8ff2-a45376983379" x="0" y="21" width="555" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement uuid="e0f51f93-3ee4-48a8-9e0e-3cae0d363c8e" x="21" y="1" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{idproductos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="de03935b-176a-46a1-b0e7-53e8ea6adda2" x="135" y="1" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{producto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cdf0ba95-7302-4483-9f37-25bddf21b56a" x="248" y="1" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{peso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d0a0ddbc-ccb9-45ec-9d60-543a8a801b91" x="370" y="1" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

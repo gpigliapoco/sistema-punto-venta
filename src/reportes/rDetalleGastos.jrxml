@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4c79efb5-cac7-4c4b-890b-48a1771e8934">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="69"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fin" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="inicio" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     dcontabilidad.`idContabilidad` AS dcontabilidad_idContabilidad,
+     dcontabilidad.`comprobante` AS dcontabilidad_comprobante,
+     dcontabilidad.`descarga` AS dcontabilidad_descarga,
+     dcontabilidad.`fecha` AS dcontabilidad_fecha,
+     dcontabilidad.`flete` AS dcontabilidad_flete,
+     dcontabilidad.`importe` AS dcontabilidad_importe,
+     operadores.`idOperadores` AS operadores_idOperadores,
+     operadores.`nombre` AS operadores_nombre
+FROM
+     `operadores` operadores INNER JOIN `dcontabilidad` dcontabilidad ON operadores.`idOperadores` = dcontabilidad.`fk_idOperadores`
+where
+dcontabilidad.`fecha` between $P{inicio} and $P{fin}
+order by
+dcontabilidad_fecha asc]]>
+	</queryString>
+	<field name="dcontabilidad_idContabilidad" class="java.lang.Long"/>
+	<field name="dcontabilidad_comprobante" class="java.lang.Integer"/>
+	<field name="dcontabilidad_descarga" class="java.lang.Integer"/>
+	<field name="dcontabilidad_fecha" class="java.sql.Date"/>
+	<field name="dcontabilidad_flete" class="java.lang.Integer"/>
+	<field name="dcontabilidad_importe" class="java.lang.Double"/>
+	<field name="operadores_idOperadores" class="java.lang.Long"/>
+	<field name="operadores_nombre" class="java.lang.String"/>
+	<variable name="variable1" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{dcontabilidad_flete}+$F{dcontabilidad_descarga}]]></variableExpression>
+	</variable>
+	<variable name="variable2" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{dcontabilidad_flete}]]></variableExpression>
+	</variable>
+	<variable name="variable3" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{dcontabilidad_descarga}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="112" y="34" width="382" height="45" uuid="19974a7e-85ec-46f1-9ce7-c26dd6ae2e64"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="36"/>
+				</textElement>
+				<text><![CDATA[FLETES Y DESCARGAS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="460c25a2-df19-4620-8ff2-a45376983379"/>
+			</line>
+			<line>
+				<reportElement x="0" y="34" width="555" height="1" uuid="460c25a2-df19-4620-8ff2-a45376983379"/>
+			</line>
+			<staticText>
+				<reportElement x="159" y="15" width="271" height="20" uuid="e76c94db-d5b7-4671-8dd3-8a7266f0d4d4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="15"/>
+				</textElement>
+				<text><![CDATA[DETALLE DE FLETES Y DESCARGAS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="21" height="20" uuid="45a2446f-807e-4eea-8c1f-71b51c0c3b7d"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="0" width="128" height="20" uuid="d1c17224-5260-4fc5-ba2f-46556e65810b"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[OPERADOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="176" y="0" width="46" height="20" uuid="72f39ffa-fa72-4ee8-b3a6-cbb83ab534bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[REMITO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="0" width="49" height="20" uuid="1f8e6fb1-d596-4f31-8721-6073aa632922"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[IMPORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="295" y="0" width="39" height="20" uuid="d7530a92-e5c6-4166-adc0-d41bc05ab300"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="0" width="48" height="20" uuid="ac30d656-397a-47f5-bdb1-9933b27f776c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[FLETE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="408" y="0" width="58" height="20" uuid="5f9e5b79-56fe-4817-a869-09db5ed983aa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DESCARGA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="482" y="0" width="58" height="20" uuid="5f9e5b79-56fe-4817-a869-09db5ed983aa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="3" width="21" height="20" uuid="aa3cfd90-851a-4821-95ae-9e483785fbbb"/>
+				<textFieldExpression><![CDATA[$F{operadores_idOperadores}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="31" y="3" width="128" height="20" uuid="64eba0d1-354f-4ad8-a166-7bfa90975671"/>
+				<textFieldExpression><![CDATA[$F{operadores_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="3" width="46" height="20" uuid="d1bd2080-53a6-4a34-a9b9-968ce11c4f2f"/>
+				<textFieldExpression><![CDATA[$F{dcontabilidad_comprobante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="232" y="3" width="49" height="20" uuid="b9bb2528-4573-4827-b4c2-4276e866cc69"/>
+				<textFieldExpression><![CDATA[$F{dcontabilidad_importe}]]></textFieldExpression>
+			</textField>
+			<textField pattern="d/M/yyyy">
+				<reportElement x="295" y="3" width="39" height="20" uuid="3777f917-9e60-4d4c-b1c8-543874703964"/>
+				<textFieldExpression><![CDATA[$F{dcontabilidad_fecha}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="346" y="3" width="48" height="20" uuid="68026f3c-20d3-4d81-a6f9-abe6d93a594d"/>
+				<textFieldExpression><![CDATA[$F{dcontabilidad_flete}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="408" y="3" width="58" height="20" uuid="94713c31-e740-4857-965d-e22050e54b75"/>
+				<textFieldExpression><![CDATA[$F{dcontabilidad_descarga}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="482" y="3" width="58" height="20" uuid="8d11620c-5c47-4d8b-816c-6a57f589076f"/>
+				<textFieldExpression><![CDATA[$V{variable1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="276" y="0" width="58" height="20" uuid="5f9e5b79-56fe-4817-a869-09db5ed983aa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTALES]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="460c25a2-df19-4620-8ff2-a45376983379"/>
+			</line>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="346" y="0" width="62" height="20" uuid="fa873ef8-f3bc-4299-aa80-9c8127f4b7a8"/>
+				<textFieldExpression><![CDATA[$V{variable2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="408" y="1" width="58" height="20" uuid="4e550f4a-fd4e-4ab3-a93a-f63fa1a6f052"/>
+				<textFieldExpression><![CDATA[$V{variable3}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

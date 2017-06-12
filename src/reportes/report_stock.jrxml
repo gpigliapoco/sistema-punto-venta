@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f3e57942-66fc-431a-a5b1-3cd7cdd659f8">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     sum(dstock.`cantidad`) AS dstock_cantidad,
+     sum(dstock.`salida`) AS dstock_salida,
+     dstock.`fecha` AS dstock_fecha,
+     productos.`idProductos` AS productos_idProductos,
+     productos.`nombre` AS productos_nombre
+FROM
+     `productos` productos INNER JOIN `dstock` dstock ON productos.`idProductos` = dstock.`fk_idProductos`
+GROUP BY
+     productos.`idProductos`]]>
+	</queryString>
+	<field name="dstock_cantidad" class="java.math.BigDecimal"/>
+	<field name="dstock_salida" class="java.math.BigDecimal"/>
+	<field name="dstock_fecha" class="java.sql.Date"/>
+	<field name="productos_idProductos" class="java.lang.Long"/>
+	<field name="productos_nombre" class="java.lang.String"/>
+	<variable name="variable1" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{stock_cantidad}-$F{stock_salida}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="139" y="16" width="289" height="45" uuid="64b5a4d7-0e14-405f-a2da-58522c4897ba"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="36"/>
+				</textElement>
+				<text><![CDATA[STOCK]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="164" y="15" width="213" height="20" uuid="3a4c251a-1f19-436e-ae3e-fb34defaeb3b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="15"/>
+				</textElement>
+				<text><![CDATA[STOCK PRODUCTOS TOTALES]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="f1a0f083-3dd5-453d-a131-a9f726c12a4b"/>
+			</line>
+			<line>
+				<reportElement x="0" y="26" width="555" height="1" uuid="d77fb632-b771-4aa6-a0ac-379a4aaad2b0"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="1" width="35" height="20" uuid="87098918-6772-41cf-a0c5-c7256e18778d"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="1" width="246" height="20" uuid="d8a55892-fbef-4c98-a1ee-b0748206c896"/>
+				<text><![CDATA[PRODUCTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="1" width="76" height="20" uuid="aa3f5255-2e02-4035-acc4-a9364324364e"/>
+				<text><![CDATA[ENTRADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="1" width="67" height="20" uuid="9f511fdb-6df8-40f1-b789-691385a52f91"/>
+				<text><![CDATA[SALIDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="478" y="0" width="77" height="20" uuid="15c6ff13-1db4-4d7f-9b3e-e0a6fa9782ca"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

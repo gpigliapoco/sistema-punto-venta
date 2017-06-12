@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="93d1db30-7ebf-4741-8b55-fa5b96ebb8b7">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="57"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT c.*,sum(c.descarga+c.flete) as total ,o.nombre from contabilidad c inner join operadores o on c.operadores_idoperadores = o.idoperadores GROUP BY c.comprobante]]>
+	</queryString>
+	<field name="idcontabilidad" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="operadores_idoperadores" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="comprobantes_idcomprobantes" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="flete" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descarga" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="importe" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="comprobante" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.math.BigDecimal"/>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="variable1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="417" height="35" uuid="9197014f-a65a-4ce8-af28-a7de18dd89d3"/>
+				<text><![CDATA[ENTREGAS REALIZADAS A CLIENTES DE MOLINOS TAHIN S.A]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="55" height="20" uuid="3c4815d8-c7e8-45fc-8377-2559621e4c11"/>
+				<text><![CDATA[CLIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="0" width="43" height="20" uuid="f631ca9a-c398-4ffb-9de2-7c5502aa163e"/>
+				<text><![CDATA[REMITO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="55" y="0" width="218" height="20" uuid="9248f5b5-c58b-4d0f-bfaf-574aa97de6ab"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="317" y="0" width="69" height="20" uuid="3d1e61b2-cd8d-4849-a73e-ac0b257cb6ab"/>
+				<textFieldExpression><![CDATA[$F{comprobante}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="455" y="0" width="100" height="20" uuid="75c9c99e-636d-4df9-a076-56860f3fa2aa"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="455" y="0" width="100" height="20" uuid="074e562a-7a4a-429c-8981-f4df01b556ce"/>
+				<textFieldExpression><![CDATA[$V{variable1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="334" y="0" width="221" height="1" uuid="db122b8a-ab9b-42aa-b51a-70a83e64b7de"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>
